@@ -23,9 +23,15 @@
         input {
             border: 1px solid black;
             padding: 10px;
-            margin: 10px 0;
+            margin: 10px auto;
             width: 300px;
             display: block;
+        }
+        .extra-slot {
+            display: none;
+        }
+        .controls {
+            margin-top: 20px;
         }
         button {
             background-color: black;
@@ -34,6 +40,12 @@
             padding: 10px 20px;
             cursor: pointer;
             font-family: monospace;
+            margin: 5px;
+        }
+        #add-btn {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
         }
         #popup {
             display: none;
@@ -63,11 +75,18 @@
     <div class="container">
         <h1>Find A Book</h1>
         <form id="searchForm" action="/results" method="POST">
-            <label>Enter your favorite books:</label>
-            <input type="text" name="book1" placeholder="Book Title 1" required>
-            <input type="text" name="book2" placeholder="Book Title 2">
-            <input type="text" name="book3" placeholder="Book Title 3">
-            <button type="submit">ENTER</button>
+            <div id="input-container">
+                <input type="text" name="book1" placeholder="Book Title 1" required>
+                <input type="text" name="book2" placeholder="Book Title 2" required>
+                <input type="text" name="book3" class="extra-slot" placeholder="Book Title 3">
+                <input type="text" name="book4" class="extra-slot" placeholder="Book Title 4">
+                <input type="text" name="book5" class="extra-slot" placeholder="Book Title 5">
+            </div>
+
+            <div class="controls">
+                <button type="button" id="add-btn">+ Add More</button>
+                <button type="submit">ENTER</button>
+            </div>
         </form>
     </div>
 
@@ -77,13 +96,28 @@
     </div>
 
     <script>
+        let currentSlots = 2;
+        const maxSlots = 5;
+        const addBtn = document.getElementById('add-btn');
+        const extraInputs = document.querySelectorAll('.extra-slot');
+
+        addBtn.addEventListener('click', () => {
+            if (currentSlots < maxSlots) {
+                extraInputs[currentSlots - 2].style.display = 'block';
+                currentSlots++;
+            }
+            if (currentSlots === maxSlots) {
+                addBtn.style.display = 'none';
+            }
+        });
+
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
             document.getElementById('popup').style.display = 'block';
             document.getElementById('overlay').style.display = 'block';
 
-            setTimeout(function() {
-                document.getElementById('searchForm').submit();
+            setTimeout(() => {
+                this.submit();
             }, 10000);
         });
     </script>
