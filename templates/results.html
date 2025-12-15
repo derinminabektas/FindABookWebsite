@@ -1,41 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results - Find A Book</title>
-    <style>
-        body {
-            font-family: monospace;
-            background-color: white;
-            color: black;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            border-bottom: 2px solid black;
-            padding-bottom: 20px;
-        }
-        .container {
-            display: flex;
-            width: 100%;
-            height: 80vh;
-        }
-        .column {
-            flex: 1;
-            border: 1px solid black;
-            margin: 10px;
-            padding: 20px;
-        }
-        ul {
-            list-style-type: square;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Results - Find A Book</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background-image: url("kitap4.png");
+    background-size: cover;
+    background-position: center;
+    font-family: monospace;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+h1 {
+    position: absolute;
+    left: 20%;
+    top: 5%;
+    color: black;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.container {
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    width: 75%;
+    height: 70%;
+    display: flex;
+    gap: 40px;
+}
+
+.column {
+    flex: 1;
+    border: none solid #333;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.column h2 {
+    margin-top: 0;
+    border-bottom: none solid #333;
+    padding-bottom: 10px;
+    color: #000;
+}
+
+ul {
+    padding-left: 20px;
+    color: #000;
+}
+
+li {
+    margin-bottom: 12px;
+}
+</style>
 </head>
+
 <body>
 
-    <h1>What We Recommend For You</h1>
+<div class="wrapper">
+
+    <h1>What We Recommend<br>For You</h1>
 
     <div class="container">
         <div class="column">
@@ -47,6 +80,7 @@
                 <li>Book Title D</li>
             </ul>
         </div>
+
         <div class="column">
             <h2>Other People Also Liked These</h2>
             <ul>
@@ -57,6 +91,8 @@
             </ul>
         </div>
     </div>
+
+</div>
 
 </body>
 </html>
