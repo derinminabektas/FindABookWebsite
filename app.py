@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 
+from service.matching_service import get_books_by_tags, get_books_by_users
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -8,6 +10,7 @@ def home():
 
 @app.route('/results', methods=['POST'])
 def results():
+    current_user = "AAAAAAAA"
     user_books = []
 
     for i in range(1, 6):
@@ -16,19 +19,9 @@ def results():
             user_books.append(book)
 
     # TEMPORARY backend logic (placeholder)
-    similar_by_tags = [
-        "Dune",
-        "Neuromancer",
-        "Foundation",
-        "Brave New World"
-    ]
+    similar_by_tags = get_books_by_tags("action")
 
-    similar_by_users = [
-        "The Hobbit",
-        "Fahrenheit 451",
-        "Snow Crash",
-        "The Left Hand of Darkness"
-    ]
+    similar_by_users = get_books_by_users(current_user)
 
     return render_template(
         'results.html',
