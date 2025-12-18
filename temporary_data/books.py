@@ -11,10 +11,8 @@ BOOKS: list[Book] = [
     Book("The Left Hand of Darkness", {"sci-fi", "sociology", "gender"}),
 ]
 
-USER_BOOKS: dict[str, list[Book]] = {
-    "lucy": [
-        Book("Snow Crash", {"cyberpunk", "sci-fi", "virtual-reality"}),
-        Book("The Left Hand of Darkness", {"sci-fi", "sociology", "gender"}),
+USER_BOOKS: dict[int, list[Book]] = {
+    1: [
     ]
 }
 

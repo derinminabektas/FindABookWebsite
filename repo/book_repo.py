@@ -4,7 +4,7 @@ from temporary_data.books import BOOKS, USER_BOOKS
 def get_all_books() -> list[Book]:
     return BOOKS
 
-def get_books_by_user_id(user_id: str) -> list[Book]:
+def get_books_by_user_id(user_id: int) -> list[Book]:
     return USER_BOOKS.get(user_id, [])
 
 def get_book_by_title(title):
