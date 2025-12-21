@@ -74,20 +74,18 @@ li {
         <div class="column">
             <h2>Books With Similar Tags</h2>
             <ul>
-                <li>Book Title A</li>
-                <li>Book Title B</li>
-                <li>Book Title C</li>
-                <li>Book Title D</li>
+                {% for book in similar_by_tags %}
+                    <li>{{ book }}</li>
+                {% endfor %}
             </ul>
         </div>
 
         <div class="column">
             <h2>Other People Also Liked These</h2>
             <ul>
-                <li>Book Title X</li>
-                <li>Book Title Y</li>
-                <li>Book Title Z</li>
-                <li>Book Title Q</li>
+                {% for book in similar_by_users %}
+                    <li>{{ book }}</li>
+                {% endfor %}
             </ul>
         </div>
     </div>
