@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request
-
-from domain.user import User
-from service.matching_service import recommend_by_tags
+from repo.hardcover_provider import get_recommendations
 
 app = Flask(__name__)
 
@@ -11,26 +9,28 @@ def home():
     return render_template('index.html')
 
 
-
 @app.route('/results', methods=['POST'])
 def results():
-        current_user = User(1,"bob", set())
-        user_book_titles = []
+    book_inputs = [
+        request.form.get('book1'),
+        request.form.get('book2'),
+        request.form.get('book3'),
+        request.form.get('book4'),
+        request.form.get('book5')
+    ]
 
-        for i in range(1, 6):
-            title = request.form.get(f'book{i}', '').strip()
-            if title:
-                user_book_titles.append(title)
+    clean_books = []
+    for b in book_inputs:
+        if b and b.strip() != "":
+            clean_books.append(b.strip().title())
 
-        similar_by_tags = recommend_by_tags(current_user.user_id, user_book_titles)
+    tag_list, user_list = get_recommendations(clean_books)
 
-        similar_by_users = []
-
-        return render_template(
-            'results.html',
-            similar_by_tags=similar_by_tags,
-            similar_by_users=similar_by_users
-        )
+    return render_template(
+        'results.html',
+        tag_books=tag_list,
+        user_books=user_list
+    )
 
 
 if __name__ == '__main__':

@@ -5,25 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find A Book</title>
     <style>
+        html {
+            height: 100%;
+        }
         body {
             font-family: monospace;
-            background-image: url("kitap3.png");
+            background-image: url("/static/kitap3.png");
             background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 80vh;
-			margin: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
         .container {
             background: rgba(139,69,19);
             border-radius: 12px;
             border: none;
-			padding: 50px;
-			box-shadow: 0 20px 40px rgba(0,0,0,1);
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,1);
         }
         input {
             border: 1px solid #ccc;
@@ -59,6 +64,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
+            color: black;
             border: 2px solid black;
             padding: 50px;
             z-index: 100;
@@ -123,7 +129,7 @@
 
             setTimeout(() => {
                 this.submit();
-            }, 6000);
+            }, 1000);
         });
     </script>
 </body>
