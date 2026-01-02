@@ -21,8 +21,7 @@ def test_score_books():
     ]
     entered_books = [Book("Snow Crash", {"cyberpunk", "sci-fi", "virtual-reality"})]
 
-    # --- Assert ---
-    scored = score_books(entered_books, user_tags, user_books, all_books)
+    scores = score_books(user_tags, eligible_books)
 
     assert len(scored) == 3
     assert scored[Book("Dune", {"sci-fi", "politics", "desert"})]== 1

@@ -9,13 +9,20 @@ def collect_user_tags(user_books: list[Book]) -> set[str]:
     return user_tags
 
 
-def score_books(user_tags: set[str], books: list[Book]) -> dict[Book, int]:
+def score_books(entered_books, user_tags, user_books, all_books):
+    eligible_books = [
+        book for book in all_books
+        if book not in user_books and book not in entered_books
+    ]
+
     scores = {}
-    for book in books:
+    for book in eligible_books:
         score = len(user_tags & book.tags)
         if score > 0:
             scores[book] = score
+
     return scores
+
 
 
 def rank(scored_books: dict[Book, int], limit: int) -> list[str]:
