@@ -8,7 +8,6 @@ def collect_user_tags(user_books: list[Book]) -> set[str]:
         user_tags.update(book.tags)
     return user_tags
 
-
 def score_books(entered_books, user_tags, user_books, all_books):
     eligible_books = [
         book for book in all_books

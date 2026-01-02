@@ -6,7 +6,6 @@ from repo import book_repo
 
 
 def test_score_books():
-    # --- Arrange ---
     dune = Book("Dune", {"sci-fi", "politics", "desert"})
     foundation = Book("Foundation", {"sci-fi", "empire"})
     neuromancer = Book("Neuromancer", {"sci-fi", "cyberpunk"})
